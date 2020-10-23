@@ -7,13 +7,11 @@ console.log(canvas)
 
 const c = canvas.getContext('2d')
 
+let fullWidth = window.innerWidth
+
 // // Rect
 // c.fillStyle = '#e4e4e4'
 // c.fillRect(canvas.width * 0.45, canvas.height * 0.4, 100, 100)
-
-
-
-
 
 // // Line
 // c.beginPath()
@@ -59,11 +57,14 @@ window.addEventListener('mousemove', function(e){
     mouseY = e.clientY
 })
 
-window.addEventListener('resize', function(){
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+window.addEventListener('touchmove', function(e){
+    mouseX = e.touches[0].clientX
+    mouseY = e.touches[0].clientY
+})
 
-    initCircle()
+
+window.addEventListener('resize', function(){
+    location.reload()
 })
 
 class Circle {
@@ -121,7 +122,7 @@ function initCircle() {
 
     circleArray = []
 
-    for (let i = 0; i < 400; i++) {
+    for (let i = 0; i < (fullWidth / 3); i++) {
         let min = Math.ceil(2)
         let max = Math.floor(20)
         let radius = Math.floor(Math.random() * (max - min) + min)
@@ -148,6 +149,8 @@ initCircle()
 function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, innerWidth, innerHeight)
+    c.font = "30px Arial"
+    c.fillText(fullWidth, fullWidth * .40, 200)
 
     for (let i = 0; i < circleArray.length; i++) {
         circleArray[i].moveCircle()
@@ -155,3 +158,5 @@ function animate() {
 
 }
 animate()
+
+

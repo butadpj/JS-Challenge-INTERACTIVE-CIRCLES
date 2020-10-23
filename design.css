@@ -4,8 +4,13 @@
     cursor: none;
 }
 
+body {
+    overflow: hidden;
+}
+
 canvas {
     border: 2px solid black;
     background-color: rgb(221, 221, 221);
+    
 }
 
