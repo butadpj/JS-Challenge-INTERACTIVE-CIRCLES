@@ -8,7 +8,11 @@ console.log(canvas)
 const c = canvas.getContext('2d')
 
 let fullWidth = window.innerWidth
+let mouseX
+let mouseY
 
+let minRadius = 5
+let maxRadius = fullWidth / 11
 // // Rect
 // c.fillStyle = '#e4e4e4'
 // c.fillRect(canvas.width * 0.45, canvas.height * 0.4, 100, 100)
@@ -46,12 +50,6 @@ let fullWidth = window.innerWidth
 
 // setInterval(randomArcs, 100)
 
-let mouseX
-let mouseY
-
-let minRadius = 5
-let maxRadius = 70
-
 window.addEventListener('mousemove', function(e){
     mouseX = e.clientX
     mouseY = e.clientY
@@ -64,7 +62,11 @@ window.addEventListener('touchmove', function(e){
 
 
 window.addEventListener('resize', function(){
-    location.reload()
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+    fullWidth = window.innerWidth
+
+    initCircle()
 })
 
 class Circle {
@@ -122,7 +124,7 @@ function initCircle() {
 
     circleArray = []
 
-    for (let i = 0; i < (fullWidth / 3); i++) {
+    for (let i = 0; i < (fullWidth / 2.5); i++) {
         let min = Math.ceil(2)
         let max = Math.floor(20)
         let radius = Math.floor(Math.random() * (max - min) + min)
