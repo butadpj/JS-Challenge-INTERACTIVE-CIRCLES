@@ -9,7 +9,7 @@ const c = canvas.getContext('2d')
 let fullWidth = window.innerWidth
 let mouseX
 let mouseY
-
+let circlesCount = fullWidth / 2.5
 let minRadius = 5
 let maxRadius = fullWidth / 11
 // // Rect
@@ -124,7 +124,7 @@ function initCircle() {
 
     circleArray = []
 
-    for (let i = 0; i < (fullWidth / 2.5); i++) {
+    for (let i = 0; i < circlesCount; i++) {
         let min = Math.ceil(2)
         let max = Math.floor(20)
         let radius = Math.floor(Math.random() * (max - min) + min)
@@ -152,7 +152,7 @@ function animate() {
     requestAnimationFrame(animate)
     c.clearRect(0, 0, innerWidth, innerHeight)
     c.font = "30px Arial"
-    c.fillText(fullWidth, fullWidth * .40, 200)
+    c.fillText(circlesCount, fullWidth * .40, 200)
 
     for (let i = 0; i < circleArray.length; i++) {
         circleArray[i].moveCircle()
