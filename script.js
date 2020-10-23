@@ -1,5 +1,4 @@
 const canvas = document.querySelector('canvas')
-
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
@@ -58,6 +57,7 @@ window.addEventListener('mousemove', function(e){
 window.addEventListener('touchmove', function(e){
     mouseX = e.touches[0].clientX
     mouseY = e.touches[0].clientY
+    e.preventDefault()
 })
 
 
